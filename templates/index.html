@@ -153,178 +153,63 @@
 <p>{{about.description}}</p>
 </div>
 <div class="shane_tm_button wow fadeInUp" data-wow-duration="1.5s">
-<a href="{% static 'access/img/resume/resume.jpg' %}" download>Download CV</a>
+<a href="{{about.image.url}}" download>Скачать</a>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div>
-
 
 <div class="shane_tm_section" id="portfolio">
-<div class="shane_tm_portfolio">
-<div class="container">
-<div class="shane_tm_title">
-<div class="title_flex">
-<div class="left">
-<span>Портфолио</span>
-<h3>Креативный Портфолио</h3>
+    <div class="shane_tm_portfolio">
+        <div class="container">
+            <div class="shane_tm_title">
+                <div class="title_flex">
+                    <div class="left">
+                        <span>Портфолио</span>
+                        <h3>Креативный Портфолио</h3>
+                    </div>
+                    <div class="portfolio_filter">
+                        <ul>
+                            <li><a href="#" class="current" data-filter="*">Все</a></li>
+                            {% for catigory in catigory %}
+                            <li><a href="#" data-filter="{{catigory.id}}">{{catigory.catigory_amount}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="shane_tm_portfolio_titles"></div>
+
+            <div class="portfolio_list wow fadeInLeft" data-wow-duration="1.5s">
+                <ul class="gallery_zoom">
+                    <li class="youtube">
+                        {% for projects in projects %}
+                        <div class="inner">
+                            <div class="entry shane_tm_portfolio_animation_wrap" data-title="Sweet Fruit" data-category="{{projects.id}}">
+                                <a class="popup-youtube" >
+                                    <img src="{{projects.image.url}}" alt />
+                                    <div class="main" data-img-url="{{projects.image.url}}"></div>
+                                </a>
+                            </div>
+                            <div class="mobile_title">
+                                <h3>{{projects.title}}</h3>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </li>
+                    <!-- Repeat similar structure for other portfolio items -->
+                    <!-- ... -->
+
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="portfolio_filter">
-<ul>
-<li><a href="#" class="current" data-filter="*">All</a></li>
-<li><a href="#" data-filter=".youtube">Youtube</a></li>
-</ul>
-</div>
-</div>
-</div>
-<div class="shane_tm_portfolio_titles"></div>
-<div class="portfolio_list wow fadeInLeft" data-wow-duration="1.5s">
-<ul class="gallery_zoom">
-<li class="youtube">
-<div class="inner">
-<div class="entry shane_tm_portfolio_animation_wrap" data-title="Sweet Fruit" data-category="Design">
-<a class="popup-youtube" href="https://www.youtube.com/watch?v=7e90gBu4pas">
-<img src="{% static 'access/img/thumbs/1-1.jpg' %}" alt />
-<div class="main" data-img-url="{% static 'access/img/portfolio/1.jpg' %}"></div>
-</a>
-</div>
-<div class="mobile_title">
-<h3>Sweet Fruit</h3>
-<span>Design</span>
-</div>
-</div>
-</li>
-<li class="vimeo">
-<div class="inner">
-<div class="entry shane_tm_portfolio_animation_wrap" data-title="Good Present" data-category="Branding">
-<a class="popup-vimeo" href="https://vimeo.com/337293658">
-<img src="{% static 'access/img/thumbs/1-1.jpg' %}" alt />
-<div class="main" data-img-url="{% static 'access/img/portfolio/2.jpg' %}"></div>
-</a>
-</div>
-<div class="mobile_title">
-<h3>Good Present</h3>
-<span>Branding</span>
-</div>
-</div>
-</li>
-<li class="soundcloud">
-<div class="inner">
-<div class="entry shane_tm_portfolio_animation_wrap" data-title="Ice Cream" data-category="Photography">
-<a class="soundcloude_link mfp-iframe audio" href="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/471954807&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
-<img src="{% static 'access/img/thumbs/1-1.jpg' %}" alt />
-<div class="main" data-img-url="{% static 'access/img/portfolio/3.jpg' %}"></div>
-</a>
-</div>
-<div class="mobile_title">
-<h3>Ice Cream</h3>
-<span>Photography</span>
-</div>
-</div>
-</li>
-<li class="popup">
-<div class="inner">
-<div class="entry shane_tm_portfolio_animation_wrap" data-title="Black Coffee" data-category="Design">
-<a class="zoom" href="{% static 'access/img/portfolio/4.jpg' %}">
-<img src="{% static 'access/img/thumbs/1-1.jpg' %}" alt />
-<div class="main" data-img-url="{% static 'access/img/portfolio/4.jpg' %}"></div>
-</a>
-</div>
-<div class="mobile_title">
-<h3>Black Coffee</h3>
-<span>Design</span>
-</div>
-</div>
-</li>
-<li class="popup">
-<div class="inner">
-<div class="entry shane_tm_portfolio_animation_wrap" data-title="Blue Lemon" data-category="Branding">
-<a class="zoom" href="{% static 'access/img/portfolio/5.jpg' %}">
-<img src="{% static 'access/img/thumbs/1-1.jpg' %}" alt />
-<div class="main" data-img-url="{% static 'access/img/portfolio/5.jpg' %}"></div>
-</a>
-</div>
-<div class="mobile_title">
-<h3>Blue Lemon</h3>
-<span>Branding</span>
-</div>
-</div>
-</li>
-<li class="detail">
-<div class="inner">
-<div class="entry shane_tm_portfolio_animation_wrap" data-title="Sweet Cherry" data-category="Photography">
-<a class="portfolio_popup" href="#">
-<img src="{% static 'access/img/thumbs/1-1.jpg' %}" alt />
-<div class="main" data-img-url="{% static 'access/img/portfolio/7.jpg' %}"></div>
-</a>
-</div>
-<div class="mobile_title">
-<h3>Sweet Cherry</h3>
-<span>Photography</span>
-</div>
-<div class="hidden_content">
-<div class="popup_details">
-<div class="main_details">
-<div class="textbox">
-<p>We live in a world where we need to move quickly and iterate on our ideas as flexibly as possible.</p>
-<p>Mockups are useful both for the creative phase of the project - for instance when you're trying to figure out your user flows or the proper visual hierarchy - and the production phase when they phase when they will represent the target product. Building mockups strikes the ideal balance ease of modification.</p>
-</div>
-<div class="detailbox">
-<ul>
-<li>
-<span class="first">Client</span>
-<span>Alvaro Morata</span>
-</li>
-<li>
-<span class="first">Category</span>
-<span><a href="#">Detail</a></span>
-</li>
-<li>
-<span class="first">Date</span>
-<span>March 07, 2021</span>
-</li>
-</ul>
-</div>
-</div>
-<div class="additional_images">
-<ul>
-<li>
-<div class="list_inner">
-<div class="my_image">
-<img src="{% static 'access/img/thumbs/4-2.jpg' %}" alt />
-<div class="main" data-img-url="{% static 'access/img/portfolio/1.jpg' %}"></div>
-</div>
-</div>
-</li>
-<li>
-<div class="list_inner">
-<div class="my_image">
-<img src="{% static 'access/img/thumbs/4-2.jpg' %}" alt />
-<div class="main" data-img-url="{% static 'access/img/portfolio/2.jpg' %}"></div>
-</div>
-</div>
-</li>
-<li>
-<div class="list_inner">
-<div class="my_image">
-<img src="{% static 'access/img/thumbs/4-2.jpg' %}" alt />
-<div class="main" data-img-url="{% static 'access/img/portfolio/3.jpg' %}"></div>
-</div>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
+
 
 
 <div class="shane_tm_section">
@@ -518,11 +403,6 @@
 </form>
 </div>
 </div>
-<div class="right">
-<div class="map_wrap">
-<div class="map" id="ieatmaps"></div>
-</div>
-</div>
 </div>
 <div class="short_info">
 <ul>
@@ -557,7 +437,7 @@
 <div class="shane_tm_copyright">
 <div class="container">
 <div class="inner">
-<p>&copy; 2022 by <a href="https://themeforest.net/user/marketify" target="_blank">Marketify</a>. All rights reserved.</p>
+<p>&copy; 2024 by <a href="https://onecode.pythonanywhere.com/" target="_blank">OneCode</a>. All rights reserved.</p>
 </div>
 </div>
 </div>

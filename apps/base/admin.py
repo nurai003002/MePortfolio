@@ -37,8 +37,8 @@ class CatigoryAdmin(admin.ModelAdmin):
     list_display = ('catigory_amount',)
     list_filter = ('catigory_amount', )
 
-@admin.register(models.Products)
-class ProductsAdmin(admin.ModelAdmin):
+@admin.register(models.Project)
+class ProjectAdmin(admin.ModelAdmin):
     list_display = ('title', 'image')
     list_filter = ('title', 'image')
 

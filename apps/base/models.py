@@ -76,15 +76,14 @@ class Catigory(models.Model):
         verbose_name = '3) Категория'
         verbose_name_plural = '4) Категории'
 
-class Products(models.Model):
+class Project(models.Model):
     catigory = models.ForeignKey(Catigory, on_delete=models.CASCADE, 
                             verbose_name='Выбрать категорию'
     )
     image = models.ImageField(
-        upload_to='image_producrs/',
+        upload_to='image_products/',
         verbose_name='Фотграфия'
     )
-
     title = models.CharField(
         max_length = 255,
         verbose_name = 'Название'

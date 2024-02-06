@@ -5,8 +5,8 @@ from apps.base import models
 def index(request):
     settings = models.Settings.objects.latest('id')
     about = models.About.objects.latest('id')
-    catigoty = models.Catigory.objects.all()
-    projects = models.Products.objects.all()
+    catigory = models.Catigory.objects.all()
+    projects = models.Project.objects.all()
     skills = models.Skills.objects.latest('id')
     video = models.Video.objects.latest('id')
     partners = models.Partners.objects.all()
