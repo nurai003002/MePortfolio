@@ -12,10 +12,8 @@
     <meta name="author" content="Marketify">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Portfolio</title>
+    <link rel="shortcut icon" href="{{settings.main_logo.url}}" type="image/x-icon">
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
@@ -23,7 +21,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'access/css/colors.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'access/css/style.css' %}" />
     <!--[if lt IE 9]> <script type="text/javascript" src="{% static 'access/js/modernizr.custom.js' %}"></script> <![endif]-->
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -33,7 +31,7 @@
     </div>
 
 
-    <div class="shane_tm_all_wrap" data-magic-cursor="show" data-color="black">
+    <div class="shane_tm_all_wrap" data-magic-cursor="show" data-color="brown">
         <div class="shane_tm_settings">
             <div class="icon">
                 <img class="svg" src="{{settings.logo.url}}" alt />
@@ -170,43 +168,41 @@
                                 <span>Портфолио</span>
                                 <h3>Креативный Портфолио</h3>
                             </div>
-                            <div class="portfolio_filter">
+                            <div class="portfolio_filter1">
                                 <ul>
-                                    <li><a href="#" class="current" data-filter="*">Все</a></li>
-                                    {% for catigory in categories %}
-                                    <li><a href="#" data-filter="{{catigory.id}}">{{catigory.catigory_amount}}</a></li>
+                                    <li><a href="{% url 'index' %}#portfolio" class="current" data-filter="*">Все</a></li>
+                                    {% for category in categories %}
+                                    <li><a href="?data-filter={{ category.id }}#portfolio" data-filter="{{ category.id }}">{{ category.catigory }}</a></li>
                                     {% endfor %}
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="shane_tm_portfolio_titles"></div>
-                    <div class="portfolio_list wow fadeInLeft" data-wow-duration="1.5s">
+                    <div class="portfolio_list  " data-wow-duration="1.5s">
                         <ul class="gallery_zoom">
-                            {% for projects in projects %}
+                            {% for project in projects %}
                             <li class="youtube">              
                                 <div class="inner">
-                                    <div class="entry shane_tm_portfolio_animation_wrap" data-title="{{ projects.title }}" data-category="{{ projects.category }}">
+                                    <div class="entry shane_tm_portfolio_animation_wrap" data-title="{{ project.title }}" data-category="{{ project.catigory_id }}">
                                         <a class="popup-youtube">
-                                            <img src="{{ projects.image.url }}" alt />
-                                            <div class="main" data-img-url="{{ projects.image.url }}"></div>
+                                            <img src="{{ project.image.url }}" alt />
+                                            <div class="main" data-img-url="{{ project.image.url }}"></div>
                                         </a>
                                     </div>
                                     <div class="mobile_title">
-                                        <h3>{{ projects.title }}</h3>
+                                        <h3>{{ project.title }}</h3>
                                     </div>
                                 </div>
                             </li>
                             {% endfor %}
                         </ul>
                     </div>
-                    
                 </div>
             </div>
         </div>
-
-
-
+        
+        
         <div class="shane_tm_section">
             <div class="shane_tm_skills">
                 <div class="container">
@@ -238,8 +234,6 @@
                 </div>
             </div>
         </div>
-
-
         <div class="shane_tm_section">
             <div class="shane_tm_business_video">
                 <div class="bg">

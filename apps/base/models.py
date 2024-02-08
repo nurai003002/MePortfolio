@@ -7,6 +7,10 @@ class Settings(models.Model):
         upload_to='image_logo/',
         verbose_name='Логотип'
     )
+    main_logo = models.ImageField(
+        upload_to='image_logo_main/',
+        verbose_name='Главное лого'
+    )
     name = models.CharField(
         max_length = 255,
         verbose_name = 'Имя '
@@ -64,13 +68,13 @@ class About(models.Model):
         verbose_name_plural = '2) Об о мне'
 
 class Catigory(models.Model):
-    catigory_amount = models.CharField(
+    catigory = models.CharField(
         max_length = 255,
         verbose_name = 'Название Категория'
     )
 
     def __str__(self):
-        return self.catigory_amount
+        return self.catigory
     
     class Meta:
         verbose_name = '3) Категория'

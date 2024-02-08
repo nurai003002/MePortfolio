@@ -14,12 +14,17 @@ def index(request):
     review = models.Reviews.objects.all()
     news = models.News.objects.all()
 
-    if request.method=='POST':
+    category_id = request.GET.get('data-filter')  # Получаем ID выбранной категории из запроса
+    print
+    if category_id:  # Если указана категория, фильтруем проекты
+        projects = models.Project.objects.filter(catigory=category_id)
+
+    if request.method == 'POST':
         if "newslater" in request.POST:
             name = request.POST.get('name')
             email = request.POST.get('email')
             message = request.POST.get('message')
-            page_contact = models.Contacts.objects.create(name=name, email=email,message=message)
+            page_contact = models.Contacts.objects.create(name=name, email=email, message=message)
             if page_contact:
                 get_text(f"""
                 Оставлена заявка на обратный звонок 📞
@@ -30,4 +35,13 @@ def index(request):
 
     """)
 
-    return render(request, 'index.html', locals())
+    return render(request, 'index.html', {'settings': settings,
+                                           'about': about,
+                                           'categories': categories,
+                                           'projects': projects,
+                                           'skills': skills,
+                                           'video': video,
+                                           'partners': partners,
+                                           'review': review,
+                                           'news': news})
+

@@ -25,8 +25,8 @@ class VideoAdmin(admin.ModelAdmin):
 
 @admin.register(models.Settings)
 class SettingsAdmin(admin.ModelAdmin):
-    list_display = ('name', 'logo', 'work', 'image')
-    list_filter = ('name', 'logo', 'work', 'image')
+    list_display = ('name', 'logo', 'work', 'image','main_logo')
+    list_filter = ('name', 'logo', 'work', 'image', 'main_logo')
 
 @admin.register(models.About)
 class AboutAdmin(admin.ModelAdmin):
@@ -35,8 +35,8 @@ class AboutAdmin(admin.ModelAdmin):
 
 @admin.register(models.Catigory)
 class CatigoryAdmin(admin.ModelAdmin):
-    list_display = ('catigory_amount',)
-    list_filter = ('catigory_amount', )
+    list_display = ('catigory',)
+    list_filter = ('catigory', )
 
 @admin.register(models.Project)
 class ProjectAdmin(admin.ModelAdmin):
