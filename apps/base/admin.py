@@ -2,6 +2,7 @@ from django.contrib import admin
 
 from apps.base import models
 # Register your models here.
+
 @admin.register(models.News)
 class NewsAdmin(admin.ModelAdmin):
     list_display = ( 'title','created_at','image', 'description')
@@ -50,4 +51,5 @@ class SkillsPercentAdmin(admin.ModelAdmin):
     
     inlines = [SkillsPercentInline]
 
+admin.site.register(models.Contacts)
 admin.site.register(models.Skills, SkillsPercentAdmin)
